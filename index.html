@@ -57,6 +57,8 @@
     </style>
 </head>
 <body>
+    <div class="floral-bg"></div>
+    <audio id="bg-music" loop><source src="nhac_nen.mp3" type="audio/mpeg"></audio> 
 
     <div class="stars"></div>
     <div id="intro-text"></div>
@@ -146,8 +148,11 @@
             }
         }
 
-        function openCard() {
-            cardModal.style.display = 'block';
+       
+         function openCard() {
+          
+            document.getElementById('bg-music').play().catch(() => {});
+            document.getElementById('card-modal').style.display = 'block';
             goToPage(1); 
         }
 
