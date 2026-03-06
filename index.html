@@ -5,22 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gửi Khánh Chi...</title>
     <style>
-        body { margin: 0; overflow: hidden; background-color: #050505; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; perspective: 1000px; }
+        body { margin: 0; overflow: hidden; background-color: #050505; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; perspective: 3000px; /* Đã tăng góc nhìn để chứa 40 ảnh */ }
         
         .stars { position: absolute; width: 100%; height: 100%; z-index: 0; background: transparent url('https://cdn.pixabay.com/photo/2016/01/27/15/25/space-1164051_1280.jpg') repeat center center; background-size: cover; opacity: 0.3; animation: twinkling 20s infinite linear; }
         @keyframes twinkling { from { background-position: 0 0; } to { background-position: -10000px 5000px; } }
 
         #intro-text { position: absolute; z-index: 10; font-size: 2.5rem; color: #ff66b2; text-shadow: 0 0 15px #ff66b2; text-align: center; opacity: 0; transition: opacity 1.5s ease-in-out; font-weight: bold; font-style: italic; padding: 0 20px; }
 
-        #gallery-container { display: none; position: relative; width: 200px; height: 280px; transform-style: preserve-3d; animation: rotateGallery 20s infinite linear; z-index: 5; margin-top: -50px; }
+        /* Đã tăng thời gian xoay lên 40s để vòng 40 ảnh lướt chậm và mượt hơn */
+        #gallery-container { display: none; position: relative; width: 200px; height: 280px; transform-style: preserve-3d; animation: rotateGallery 40s infinite linear; z-index: 5; margin-top: -50px; }
         .pic { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 102, 178, 0.5); object-fit: cover; border: 2px solid #ff66b2; }
         
-        .pic:nth-child(1) { transform: rotateY(0deg) translateZ(300px); }
-        .pic:nth-child(2) { transform: rotateY(60deg) translateZ(300px); }
-        .pic:nth-child(3) { transform: rotateY(120deg) translateZ(300px); }
-        .pic:nth-child(4) { transform: rotateY(180deg) translateZ(300px); }
-        .pic:nth-child(5) { transform: rotateY(240deg) translateZ(300px); }
-        .pic:nth-child(6) { transform: rotateY(300deg) translateZ(300px); }
+        /* Đã xóa các CSS tĩnh của từng ảnh (.pic:nth-child...) để dùng JS xử lý */
 
         @keyframes rotateGallery { from { transform: rotateX(-10deg) rotateY(0deg); } to { transform: rotateX(-10deg) rotateY(360deg); } }
 
@@ -65,21 +61,14 @@
     <div class="stars"></div>
     <div id="intro-text"></div>
 
-    <div id="gallery-container">
-        <img class="pic" src="at1.JPG" alt="Ảnh 1">
-        <img class="pic" src="at2.JPEG" alt="Ảnh 2">
-        <img class="pic" src="at5.JPG" alt="Ảnh 3">
-        <img class="pic" src="at3.png" alt="Ảnh 4">
-        <img class="pic" src="at4.PNG" alt="Ảnh 5">
-        <img class="pic" src="at6.png" alt="Ảnh 6">
-    </div>
+    <div id="gallery-container"></div>
 
     <div id="envelope-icon" onclick="openCard()">💌 Nhấn để mở thư...</div>
 
     <div id="card-modal">
         <div id="page1" class="page-content active">
             <h2>Gửi Khánh Chi ❤️</h2>
-            <p> Mỗi lần chọn hoa, anh đều đắn đo và tìm hiểu rất kỹ vì đó là 1 lần vô cùng quan trọng, đặc biệt với anh. Anh không chỉ chọn những bông hoa đẹp nhất, mà còn tìm kiếm những loài hoa mang ngôn ngữ riêng, để thay anh nói lên những tâm tư mà một người đôi khi hơi khô khan như anh khó lòng diễn đạt hết.</p>
+            <p>Mỗi lần chọn hoa, anh đều đắn đo và tìm hiểu rất kỹ vì đó là 1 lần vô cùng quan trọng, đặc biệt với anh. Anh không chỉ chọn những bông hoa đẹp nhất, mà còn tìm kiếm những loài hoa mang ngôn ngữ riêng, để thay anh nói lên những tâm tư mà một người đôi khi hơi khô khan như anh khó lòng diễn đạt hết.</p>
             <p>Em còn nhớ bó hoa Tulip ngày ấy không? Đó là lời tỏ tình chân thành, là mong ước về một tình yêu bắt đầu thật bình yên và thuần khiết. Còn hôm nay, anh gửi đến em những đóa Cẩm Tú Cầu này. Trong ngôn ngữ của hoa, Cẩm Tú Cầu tượng trưng cho lòng biết ơn và lời xin lỗi chân thành nhất. Anh mượn sắc hoa này để thay cho sự hối lỗi sâu sắc vì những lần vô tâm đã khiến em phải buồn lòng...</p>
             <div class="btn-container">
                 <button class="btn" onclick="goToPage(2)">Đọc tiếp...</button>
@@ -94,7 +83,7 @@
             
             <p>Nhưng "Cục xanh xanh" của em thực sự yêu em, và vẫn luôn như vậy. Anh không biết từ dấu mốc 6/3 này (kỷ niệm 4 tháng anh được em chấp nhận cho phép yêu em), hai ta rồi sẽ như thế nào, nhưng anh mong mình có thêm một cơ hội cuối nữa, được không em? Anh không dám xin em quay về như ngày 16/5/2025 mình bắt đầu nhắn tin, hay ngày 27/9/2025 mình cùng bước đi. Chỉ mong nếu còn một cơ hội nhỏ nhoi giữa muôn vàn đổ vỡ, cho anh được cúi đầu sửa sai, được nắm tay và ôm em thêm nhiều lần nữa.</p>
 
-            <p>Anh không đủ can đảm để làm bạn với người mình yêu. Anh cũng không đủ dũng cảm để nhìn em yêu người khác. Ở lần yêu này a không mong gì to tát. Chỉ mong ngày mai vẫn là em và cả mai về sau nữa em vẫn là em. Người ta bảo, chim rồi cũng biết đường bay về tổ. Anh không dám chắc mình mạnh mẽ như màu áo, hay lời nói của a, nhưng anh hy vọng trái tim này sẽ không lạc lối quá lâu. Dẫu có những khoảng cách vô hình. A vẫn luôn tin chỉ cần chân tình sẽ tìm được cách quay về bên nhau.. Chỉ mong ngày mai vẫn là em và cả mai về sau nữa em vẫn là em. Người ta bảo, chim rồi cũng biết đường bay về tổ. Anh không dám chắc mình mạnh mẽ như màu áo, hay lời nói của a, nhưng anh hy vọng trái tim này sẽ không lạc lối quá lâu. Dẫu có những khoảng cách vô hình. A vẫn luôn tin chỉ cần chân tình sẽ tìm được cách quay về bên nhau. Sau cơn mưa trời lại nắng. Chỉ mong khi ngoảng lại, em không hối tiếc vì tình cảm của em dành cho em. Cho anh thêm một cơ hội và thời gian dể được ở bên em, để cho em thấy sự thay đổi của anh nhé.</p>
+            <p>Anh không đủ can đảm để làm bạn với người mình yêu. Anh cũng không đủ dũng cảm để nhìn em yêu người khác. Ở lần yêu này a không mong gì to tát. Chỉ mong ngày mai vẫn là em và cả mai về sau nữa em vẫn là em. Người ta bảo, chim rồi cũng biết đường bay về tổ. Anh không dám chắc mình mạnh mẽ như màu áo, hay lời nói của a, nhưng anh hy vọng trái tim này sẽ không lạc lối quá lâu. Dẫu có những khoảng cách vô hình. A vẫn luôn tin chỉ cần chân tình sẽ tìm được cách quay về bên nhau.. Sau cơn mưa trời lại nắng. Chỉ mong khi ngoảnh lại, em không hối tiếc vì tình cảm của em dành cho anh. Cho anh thêm một cơ hội và thời gian để được ở bên em, để cho em thấy sự thay đổi của anh nhé.</p>
             <div class="btn-container">
                 <button class="btn btn-outline" onclick="goToPage(1)">Quay lại</button>
                 <button class="btn" onclick="goToPage(3)">Trang cuối</button>
@@ -150,16 +139,40 @@
             }
         }
 
-       
-         
+        // Tự động tạo 40 ảnh cho gallery
+        function buildGallery() {
+            const totalPics = 40; 
+            const angle = 360 / totalPics; 
+            const distance = 1300; // Khoảng cách đẩy ảnh ra xa tâm
+
+            for (let i = 1; i <= totalPics; i++) {
+                const img = document.createElement('img');
+                img.className = 'pic';
+                
+                // LƯU Ý: Bạn cần đảm bảo đã đổi tên tất cả 40 ảnh thành at1.jpg, at2.jpg ... at40.jpg
+                img.src = `at${i}.jpg`; 
+                img.alt = `Ảnh ${i}`;
+                
+                // Set góc xoay và khoảng cách 3D
+                img.style.transform = `rotateY(${i * angle}deg) translateZ(${distance}px)`;
+                
+                gallery.appendChild(img);
+            }
+        }
+
         function openCard() {
-    const audio = document.getElementById('bg-music');
-    audio.play().catch(error => {
-        console.log('Audio playback failed:', error);
-    });
-    document.getElementById('card-modal').style.display = 'block';
-    goToPage(1); 
-}
+            const audio = document.getElementById('bg-music');
+            
+            // Ép phát nhạc và xử lý lỗi nếu bị trình duyệt chặn
+            audio.play().then(() => {
+                console.log('Nhạc đã phát thành công');
+            }).catch(error => {
+                console.log('Audio playback failed:', error);
+            });
+
+            document.getElementById('card-modal').style.display = 'block';
+            goToPage(1); 
+        }
 
         function closeCard() {
             cardModal.style.display = 'none';
@@ -177,6 +190,7 @@
         }
 
         window.onload = () => {
+            buildGallery(); // Gọi hàm tạo 40 ảnh ngay khi tải trang
             setTimeout(showIntro, 500);
         };
     </script>
