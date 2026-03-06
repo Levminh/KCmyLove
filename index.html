@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Khánh Chi...</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #050505; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; perspective: 1000px; }
+        
+        .stars { position: absolute; width: 100%; height: 100%; z-index: 0; background: transparent url('https://cdn.pixabay.com/photo/2016/01/27/15/25/space-1164051_1280.jpg') repeat center center; background-size: cover; opacity: 0.3; animation: twinkling 20s infinite linear; }
+        @keyframes twinkling { from { background-position: 0 0; } to { background-position: -10000px 5000px; } }
+
+        #intro-text { position: absolute; z-index: 10; font-size: 2.5rem; color: #ff66b2; text-shadow: 0 0 15px #ff66b2; text-align: center; opacity: 0; transition: opacity 1.5s ease-in-out; font-weight: bold; font-style: italic; padding: 0 20px; }
+
+        #gallery-container { display: none; position: relative; width: 200px; height: 280px; transform-style: preserve-3d; animation: rotateGallery 20s infinite linear; z-index: 5; margin-top: -50px; }
+        .pic { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 102, 178, 0.5); object-fit: cover; border: 2px solid #ff66b2; }
+        
+        .pic:nth-child(1) { transform: rotateY(0deg) translateZ(300px); }
+        .pic:nth-child(2) { transform: rotateY(60deg) translateZ(300px); }
+        .pic:nth-child(3) { transform: rotateY(120deg) translateZ(300px); }
+        .pic:nth-child(4) { transform: rotateY(180deg) translateZ(300px); }
+        .pic:nth-child(5) { transform: rotateY(240deg) translateZ(300px); }
+        .pic:nth-child(6) { transform: rotateY(300deg) translateZ(300px); }
+
+        @keyframes rotateGallery { from { transform: rotateX(-10deg) rotateY(0deg); } to { transform: rotateX(-10deg) rotateY(360deg); } }
+
+        #envelope-icon { display: none; position: absolute; bottom: 50px; z-index: 20; font-size: 2.2rem; cursor: pointer; animation: bounce 2s infinite; text-shadow: 0 0 10px #ff66b2; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-20px); } 60% { transform: translateY(-10px); } }
+
+        #card-modal { 
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            width: 90%; max-width: 450px; max-height: 80vh; overflow-y: auto; 
+            background: rgba(255, 240, 245, 0.98); padding: 35px 25px; border-radius: 15px; 
+            box-shadow: 0 0 40px rgba(255, 102, 178, 0.6); z-index: 100; color: #333; text-align: justify; 
+        }
+        
+        #card-modal::-webkit-scrollbar { width: 6px; }
+        #card-modal::-webkit-scrollbar-thumb { background-color: #ff66b2; border-radius: 10px; }
+
+        .page-content { display: none; animation: fadeIn 0.8s; }
+        .page-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        #card-modal h2 { color: #d63384; margin-top: 0; font-size: 1.5rem; text-align: center; border-bottom: 1px solid #ffc1e3; padding-bottom: 10px; margin-bottom: 20px; }
+        #card-modal p { font-size: 1.05rem; line-height: 1.7; margin-bottom: 15px; text-indent: 20px; color: #444; }
+        
+        .btn-container { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
+        .btn { 
+            padding: 12px 25px; background-color: #d63384; color: white; 
+            border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: bold; 
+            transition: all 0.3s;
+        }
+        .btn:active { transform: scale(0.95); }
+        .btn-outline {
+            background-color: transparent; border: 2px solid #d63384; color: #d63384;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+    <div id="intro-text"></div>
+
+    <div id="gallery-container">
+        <img class="pic" src="at1.jpg" alt="Ảnh 1">
+        <img class="pic" src="at2.JPEG" alt="Ảnh 2">
+        <img class="pic" src="at5.JPG" alt="Ảnh 3">
+        <img class="pic" src="at3.png" alt="Ảnh 4">
+        <img class="pic" src="at4.PNG" alt="Ảnh 5">
+        <img class="pic" src="at6.png" alt="Ảnh 6">
+    </div>
+
+    <div id="envelope-icon" onclick="openCard()">💌 Nhấn để mở thư...</div>
+
+    <div id="card-modal">
+        <div id="page1" class="page-content active">
+            <h2>Gửi Khánh Chi ❤️</h2>
+            <p> Mỗi lần chọn hoa, anh đều đắn đo và tìm hiểu rất kỹ vì đó là 1 lần vô cùng quan trọng, đặc biệt với anh. Anh không chỉ chọn những bông hoa đẹp nhất, mà còn tìm kiếm những loài hoa mang ngôn ngữ riêng, để thay anh nói lên những tâm tư mà một người đôi khi hơi khô khan như anh khó lòng diễn đạt hết.</p>
+            <p>Em còn nhớ bó hoa Tulip ngày ấy không? Đó là lời tỏ tình chân thành, là mong ước về một tình yêu bắt đầu thật bình yên và thuần khiết. Còn hôm nay, anh gửi đến em những đóa Cẩm Tú Cầu này. Trong ngôn ngữ của hoa, Cẩm Tú Cầu tượng trưng cho lòng biết ơn và lời xin lỗi chân thành nhất. Anh mượn sắc hoa này để thay cho sự hối lỗi sâu sắc vì những lần vô tâm đã khiến em phải buồn lòng...</p>
+            <div class="btn-container">
+                <button class="btn" onclick="goToPage(2)">Đọc tiếp...</button>
+            </div>
+        </div>
+
+        <div id="page2" class="page-content">
+            <h2>Lời từ trái tim anh</h2>
+            <p>Không biết khi em đọc được những lời này, sau khi buổi hẹn của mình đã kết thúc, em sẽ thấy thế nào. Anh muốn cảm ơn em thật nhiều vì đã từng thương anh, quan tâm anh đến vậy.</p>
+            
+            <p>Anh xin lỗi vì đã làm em thất vọng nhiều. Anh không có lời bào chữa nào cho hành vi của mình. Anh đã sai khi đã nóng giận, vô tâm, vô tình, sự thiếu tinh tế của mình đã gây tổn thương cho em. Anh thực sự hối hận và day dứt. Anh đã sai khi nóng giận, vô tâm và nói những lời tổn thương người phụ nữ tuyệt vời nhất với anh. Anh đã không lắng nghe, không thấu hiểu cho cảm xúc của em.</p>
+            
+            <p>Nhưng "Cục xanh xanh" của em thực sự yêu em, và vẫn luôn như vậy. Anh không biết từ dấu mốc 6/3 này (kỷ niệm 4 tháng anh được em chấp nhận cho phép yêu em), hai ta rồi sẽ như thế nào, nhưng anh mong mình có thêm một cơ hội cuối nữa, được không em? Anh không dám xin em quay về như ngày 16/5/2025 mình bắt đầu nhắn tin, hay ngày 27/9/2025 mình cùng bước đi. Chỉ mong nếu còn một cơ hội nhỏ nhoi giữa muôn vàn đổ vỡ, cho anh được cúi đầu sửa sai, được nắm tay và ôm em thêm nhiều lần nữa.</p>
+
+            <p>Anh không đủ can đảm để làm bạn với người mình yêu. Anh cũng không đủ dũng cảm để nhìn em yêu người khác. Ở lần yêu này a không mong gì to tát. Chỉ mong ngày mai vẫn là em và cả mai về sau nữa em vẫn là em. Người ta bảo, chim rồi cũng biết đường bay về tổ. Anh không dám chắc mình mạnh mẽ như màu áo, hay lời nói của a, nhưng anh hy vọng trái tim này sẽ không lạc lối quá lâu. Dẫu có những khoảng cách vô hình. A vẫn luôn tin chỉ cần chân tình sẽ tìm được cách quay về bên nhau.. Chỉ mong ngày mai vẫn là em và cả mai về sau nữa em vẫn là em. Người ta bảo, chim rồi cũng biết đường bay về tổ. Anh không dám chắc mình mạnh mẽ như màu áo, hay lời nói của a, nhưng anh hy vọng trái tim này sẽ không lạc lối quá lâu. Dẫu có những khoảng cách vô hình. A vẫn luôn tin chỉ cần chân tình sẽ tìm được cách quay về bên nhau. Sau cơn mưa trời lại nắng. Chỉ mong khi ngoảng lại, em không hối tiếc vì tình cảm của em dành cho em. Cho anh thêm một cơ hội và thời gian dể được ở bên em, để cho em thấy sự thay đổi của anh nhé.</p>
+            <div class="btn-container">
+                <button class="btn btn-outline" onclick="goToPage(1)">Quay lại</button>
+                <button class="btn" onclick="goToPage(3)">Trang cuối</button>
+            </div>
+        </div>
+
+        <div id="page3" class="page-content">
+            <h2>Điều cuối cùng "Cục xanh xanh" muốn nói...</h2>
+            <p>Ngoài bó hoa hôm nay, anh còn một bó hoa nữa đã lặng lẽ đặt trước và chuẩn bị từ rất lâu để dành riêng cho ngày sinh nhật của em vào ngày mai. Đó chỉ là chút tấm lòng nhỏ của a thôi.</p>
+            <p>Dù sau tối nay, câu trả lời của em có như thế nào đi chăng nữa, anh cũng mong em hãy nhận lấy nó cho anh được vui nhé. Chỉ cần em biết rằng, tuổi mới của em luôn có một người mong em mãi rực rỡ và bình an như những đóa hoa ấy.</p>
+            <p>Chúc mừng sinh nhật em, và mong em có một ngày 8/3 thật ấm áp, Khánh Chi của anh.</p>
+            <div class="btn-container">
+                <button class="btn btn-outline" onclick="goToPage(2)">Quay lại</button>
+                <button class="btn" onclick="closeCard()">Đóng lại</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const introText = document.getElementById('intro-text');
+        const gallery = document.getElementById('gallery-container');
+        const envelope = document.getElementById('envelope-icon');
+        const cardModal = document.getElementById('card-modal');
+        const pages = document.querySelectorAll('.page-content');
+
+        const messages = [
+            "Đang tải...",
+            "Gửi người con gái anh yêu",
+            "Chúc Mừng Sinh Nhật em 🎂",
+            "Và...",
+            "Chúc Mừng Ngày 8/3 🌸",
+            "Xin lỗi em vì tất cả..."
+        ];
+
+        let msgIndex = 0;
+
+        function showIntro() {
+            if (msgIndex < messages.length) {
+                introText.innerText = messages[msgIndex];
+                introText.style.opacity = 1;
+                
+                setTimeout(() => {
+                    introText.style.opacity = 0;
+                    msgIndex++;
+                    setTimeout(showIntro, 1000); 
+                }, 2200); 
+            } else {
+                setTimeout(() => {
+                    introText.style.display = 'none';
+                    gallery.style.display = 'block';
+                    envelope.style.display = 'block';
+                }, 500);
+            }
+        }
+
+        function openCard() {
+            cardModal.style.display = 'block';
+            goToPage(1); 
+        }
+
+        function closeCard() {
+            cardModal.style.display = 'none';
+        }
+
+        function goToPage(pageNumber) {
+            pages.forEach((page, index) => {
+                if (index + 1 === pageNumber) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+            cardModal.scrollTop = 0; 
+        }
+
+        window.onload = () => {
+            setTimeout(showIntro, 500);
+        };
+    </script>
+</body>
+</html>
