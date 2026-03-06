@@ -58,8 +58,10 @@
 </head>
 <body>
     <div class="floral-bg"></div>
-    <audio id="bg-music" loop><source src="nhac_nen.mp3" type="audio/mpeg"></audio> 
-
+    <audio id="bg-music" loop>
+        <source src="nhac_nen.mp3" type="audio/mpeg">
+    </audio> 
+       
     <div class="stars"></div>
     <div id="intro-text"></div>
 
@@ -149,12 +151,15 @@
         }
 
        
-         function openCard() {
-          
-            document.getElementById('bg-music').play().catch(() => {});
-            document.getElementById('card-modal').style.display = 'block';
-            goToPage(1); 
-        }
+         
+        function openCard() {
+    const audio = document.getElementById('bg-music');
+    audio.play().catch(error => {
+        console.log('Audio playback failed:', error);
+    });
+    document.getElementById('card-modal').style.display = 'block';
+    goToPage(1); 
+}
 
         function closeCard() {
             cardModal.style.display = 'none';
